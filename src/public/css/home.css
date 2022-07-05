@@ -1,0 +1,14 @@
+.iconWrapper{
+display: flex;
+flex-wrap: wrap;
+justify-content:center;
+text-align: left;
+}
+.iconAlign{
+    text-align: center;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+.color{
+    background-color: yellow;
+}
