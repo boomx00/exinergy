@@ -1,14 +1,37 @@
 .iconWrapper{
-display: flex;
+/* display: flex;
 flex-wrap: wrap;
-justify-content:center;
-text-align: left;
+justify-content: flex-start */
 }
 .iconAlign{
     text-align: center;
-    margin-left: 30px;
-    margin-right: 30px;
+   
 }
 .color{
     background-color: yellow;
 }
+.container{
+    margin: 0 auto!important;
+}
+
+@media (min-width: 320px) {
+    .grid-container { 
+        display: grid;
+        grid-template-columns: repeat(3, 0.5fr);
+        padding: 10px;
+        gap: 10px; }
+  }
+
+  @media (min-width: 900px) {
+    .grid-container { 
+        display: grid;
+        grid-template-columns: repeat(7,  1fr);
+        padding: 10px;
+        gap: 15px; }
+  }
+ 
+  .grid-item {
+  
+    font-size: 13px;
+    text-align: center;
+  }
