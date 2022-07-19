@@ -56,3 +56,15 @@ export const personalUser = (user_id)=>{
   }
   }
 }
+
+export const checkToken = ()=>{
+  return async dispatch=>{
+    try{
+      const res = await axios.post("token/check")
+
+    }catch(err){
+       return(err.response.status)
+    }
+
+  }
+}

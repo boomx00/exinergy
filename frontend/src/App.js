@@ -20,6 +20,18 @@ axios.interceptors.request.use(async (request) => {
 }, (error) => {
   return Promise.reject(error)
 })
+
+axios.interceptors.response.use(async (response) => {
+  // return response
+  if (response.data.status == 401 || response.data.STATUS == "AUTH_UNAUTORIZED_TOKEN") {
+    console.log("UN")
+    return response
+  } else {
+    return response
+  }
+}, (error) => {
+  return Promise.reject(error)
+})
 function App() {
   return (
     <Provider store={store}>
