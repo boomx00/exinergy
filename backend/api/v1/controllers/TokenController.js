@@ -16,6 +16,8 @@ class TokenController{
             console.log(e)
         }
     }
+
+    
 }
 
 module.exports = new TokenController();
