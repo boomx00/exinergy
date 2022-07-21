@@ -7,10 +7,12 @@ const db = require('../db/db')
 
 const tokenValidation = async (req, res, next) => {
     const token = req.headers["x-access-token"].split(' ')[1];
+    console.log(token)
     if (token) {
         req.token = token
         try {
             const decodedToken = await tokenVerification(req.token, next)
+            console.log(decodedToken)
             if (!decodedToken) {
                 res.status(401).send({
                     "STATUS": "AUTH_UNAUTHORIZED_TOKEN",
@@ -58,43 +60,5 @@ const tokenVerification = async ( token,next)=>{
         }
     }
 }
-// const tokenValidation = async (req, res, next) => {
-//     const token = req.headers["x-access-token"]
-//     if (token) {
-//         req.token = token
-//         try {
-//             const decodedToken = verifyToken(req.token, next)
-//             if (!decodedToken) {
-//                 res.status(401).send({
-//                     "STATUS": "AUTH_UNAUTHORIZED_TOKEN",
-//                     "MESSAGE": "User does not have token."
-//                 })
-//             } else if (decodedToken.expired) {
-//                 res.status(401).send({
-//                     "STATUS": "AUTH_UNAUTHORIZED_TOKEN",
-//                     "MESSAGE": "User token is expired please re-login."
-//                 })
-//             } else {
-//                 let role = "";
-//                 await db.transaction(async(t)=>{
-//                     role = await db('user_roles').transacting(t).where('user_id','=',decodedToken.data.userId)
-//                 })
-//                 res.locals.level = role[0].type_id
-//                 res.locals.id = decodedToken.data.userId;
-//                 next();
-//             }
 
-//         } catch (err) {
-//             res.status(401).send({
-//                 "STATUS": "AUTH_UNAUTHORIZED_TOKEN",
-//                 "MESSAGE": "User token is error, please re-try again."
-//             })
-//         }
-//     } else {
-//         res.status(401).send({
-//             "STATUS": "AUTH_UNAUTHORIZED_TOKEN",
-//             "MESSAGE": "User does not have token."
-//         })
-//     }
-// }
 module.exports = tokenValidation

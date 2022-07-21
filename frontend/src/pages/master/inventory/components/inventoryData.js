@@ -1,41 +1,41 @@
-import { React, useState,useRef,useCallback } from "react";
+import { React, useState,useRef,useCallback, useEffect,componentDidUpdate } from "react";
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
-function InventoryData(){
-    const gridRef = useRef();
+import axios from "axios";
+import { getInventory } from "../../../../redux/slices/inventorySlices";
+import { connect, useDispatch } from 'react-redux'
 
-    const [rowData] = useState([
-        {make: "Toyotaaaaaaaaaaaaaaaaaaaaa", model: "Celica", price: 35000},
-        {make: "Ford", model: "Mondeo", price: 32000},
-        {make: "Porsche", model: "Boxster", price: 72000},
-        {make: "Toyotaaaaaaaaaaaaaaaaaaaaa", model: "Celica", price: 35000},
-        {make: "Ford", model: "Mondeo", price: 32000},
-        {make: "Porsche", model: "Boxster", price: 72000},
-        {make: "Toyotaaaaaaaaaaaaaaaaaaaaa", model: "Celica", price: 35000},
-        {make: "Ford", model: "Mondeo", price: 32000},
-        {make: "Porsche", model: "Boxster", price: 72000},
-        {make: "Toyotaaaaaaaaaaaaaaaaaaaaa", model: "Celica", price: 35000},
-        {make: "Ford", model: "Mondeo", price: 32000},
-        {make: "Porsche", model: "Boxster", price: 72000},
-        {make: "Toyotaaaaaaaaaaaaaaaaaaaaa", model: "Celica", price: 35000},
-        {make: "Ford", model: "Mondeo", price: 32000},
-        {make: "Porsche", model: "Boxster", price: 72000},
-        {make: "Toyotaaaaaaaaaaaaaaaaaaaaa", model: "Celica", price: 35000},
-        {make: "Ford", model: "Mondeo", price: 32000},
-        {make: "Porsche", model: "Boxster", price: 72000}
-    ]);
+function InventoryData(props){
+    const dispatch = new useDispatch()
+    const gridRef = useRef();
+    const [rowData,setRowData] = useState(props.inventory.inventory);
+
+    useEffect(() => {
+        const fetchData = async () => {
+         
+        }
+        dispatch(getInventory())     
+        setRowData(props.inventory.inventory)
+        // setRowData(props.inventory)
+    }, [props.inventory.inventory]);  
+    
+
     
     const [columnDefs] = useState([
-        { field: 'make', width: 50},
-        { field: 'model' },
-        { field: 'price'}
+        { field: 'id', width: 100},
+        { field: 'product_category' },
+        { field: 'product_cost'},
+        { field: 'product_desc'},
+        { field: 'product_name'},
+        { field: 'product_price'},
+
     ])
     const onFirstDataRendered = useCallback((params) => {
         gridRef.current.api.sizeColumnsToFit();
       }, []);
       return(
-            <div className="container">
+            <div>
         <div className="ag-theme-alpine" style={{height: 650, width: '100%'}}>
         <AgGridReact
         ref={gridRef}
@@ -47,9 +47,13 @@ function InventoryData(){
             >
         </AgGridReact>
             </div>
-       
+        <button onClick={(e)=>{console.log(props.data)}}>asf</button>
     </div>
       )
 }
 
-export default InventoryData;
+const mapStateToProps = (state) => ({
+    inventory: state.inventory
+  })
+export default connect(mapStateToProps, null)(InventoryData)
+// export default InventoryData;

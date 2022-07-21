@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const authSlice = createSlice({
+export const authSlice = createSlice({
   name: 'auth',
-  initialState: {email:null,name: null, phone_number: null, user_id: null},
+  initialState: {email:"asdasd",name: null, phone_number: null, user_id: null},
   reducers:{
     setCredentials: (state,action)=>{
         state.name = action.payload.name
@@ -60,8 +60,8 @@ export const personalUser = (user_id)=>{
 export const checkToken = ()=>{
   return async dispatch=>{
     try{
-      const res = await axios.post("token/check")
-
+      const res = await axios.post("/token/check")
+      return res.status
     }catch(err){
        return(err.response.status)
     }

@@ -6,7 +6,7 @@ const userVerifier = require('../middleware/userVerifier')
 
 // Create a new local user
 app.post("/refresh", TokenController.refreshToken);
-app.post("/check", tokenVerifier);
+app.post("/check", tokenVerifier, TokenController.checkToken);
 
 
 module.exports = app;
