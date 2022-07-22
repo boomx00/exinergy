@@ -13,12 +13,12 @@ exports.up = function (knex) {
             table.string('name')
             table.integer('phone_number')
         })
-};
+    }
 
 exports.down = function (knex) {
     return knex.schema
         .dropTable('users')
         .dropTable('user_profiles')
-       
+
         
 };

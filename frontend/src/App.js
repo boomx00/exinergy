@@ -8,7 +8,7 @@ import axios from 'axios'
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import './App.css';
-axios.defaults.baseURL = "http://localhost:8000/api/v1/"
+axios.defaults.baseURL = "http://exinergy.xyz:8000/api/v1/"
 
 
 axios.interceptors.request.use(async (request) => {
