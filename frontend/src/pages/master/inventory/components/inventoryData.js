@@ -24,11 +24,12 @@ function InventoryData(props){
     
     const [columnDefs] = useState([
         { field: 'id', width: 100},
-        { field: 'product_category' },
-        { field: 'product_cost'},
-        { field: 'product_desc'},
-        { field: 'product_name'},
-        { field: 'product_price'},
+        { field: 'product_name', headerName: 'Namw' },
+        { field: 'product_category', headerName: 'Category' },
+        { field: 'product_price', headerName: 'Price' },
+
+        { field: 'product_cost' ,headerName: 'Cost' },
+        { field: 'product_desc',headerName: 'Desc' },
 
     ])
     const onFirstDataRendered = useCallback((params) => {
