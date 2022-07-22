@@ -5,6 +5,8 @@ import { connect, useDispatch } from 'react-redux'
 import Table from 'react-bootstrap/Table';
 import InventoryModal from './components/inventoryModal';
 import Document from './document';
+import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
+
 function Offering  (props)  {
     const childComp = useRef()
     const dispatch = new useDispatch()
@@ -38,15 +40,25 @@ function Offering  (props)  {
         // console.log(productArray)
       }
   return(
+    <div>
+<Navbar bg="primary" expand="lg">
+      <Container>
+        <Navbar.Brand href="/dashboard">Offering</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        
+      </Container>
+    </Navbar>
+
+<br></br>
 <div className='container'>
 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
         <Form.Label>To: </Form.Label>
-        <Form.Control type="email" placeholder="name@example.com" onChange={(e)=>setReceiver(e.target.value)} />
+        <Form.Control type="text" placeholder="Enter receiver" onChange={(e)=>setReceiver(e.target.value)} />
       </Form.Group>
       <Form.Label>Product list: </Form.Label>
       <br></br>
 
-      <Table striped bordered hover>
+      <Table striped bordered hover variant="light">
       <thead>
         <tr>
           <th>ID</th>
@@ -87,12 +99,15 @@ function Offering  (props)  {
       <Button variant="primary" size="lg" onClick={()=>setShow(true)} style={{width: "100%"}}>
         Add Products
       </Button>
-      <Button variant="primary" size="lg" style={{width: "100%"}} onClick={handleOnClick}>
+
+      <Button  variant="success" size="lg" style={{width: "100%", marginTop: "2rem"}} onClick={handleOnClick}>
         Generate PDF
       </Button>
     {/* <button type='button' onClick={savePDF}/> */}
     
     </div>
+    </div>
+
   )
 };
 

@@ -37,7 +37,7 @@ function InventoryData(props){
       }, []);
       return(
             <div>
-        <div className="ag-theme-alpine" style={{height: 650, width: '100%'}}>
+        <div className="ag-theme-alpine" style={{height: 650, width: '100%', marginBottom:"3rem"}}>
         <AgGridReact
         ref={gridRef}
             onFirstDataRendered={onFirstDataRendered}
@@ -48,7 +48,7 @@ function InventoryData(props){
             >
         </AgGridReact>
             </div>
-        <button onClick={(e)=>{console.log(props.data)}}>asf</button>
+        {/* <button onClick={(e)=>{console.log(props.data)}}>asf</button> */}
     </div>
       )
 }

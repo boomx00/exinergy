@@ -9,6 +9,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import './App.css';
 axios.defaults.baseURL = "http://exinergy.xyz:8000/api/v1/"
+// axios.defaults.baseURL = "http://localhost:8000/api/v1/"
 
 
 axios.interceptors.request.use(async (request) => {
@@ -21,6 +22,7 @@ axios.interceptors.request.use(async (request) => {
 }, (error) => {
   return Promise.reject(error)
 })
+document.body.style = 'background: #8399a8;';
 
 axios.interceptors.response.use(async (response) => {
   // return response

@@ -45,11 +45,11 @@ var target = props.target;
               className="me-2"
               aria-label="Search"
             />
-            <Button variant="outline-success">Search</Button>
+            <Button variant="success">Search</Button>
           </Form>
         </div>
         <div className="col-2 align-right">
-        <Button variant="outline-success">Add</Button>
+        <Button variant="success">Add</Button>
 
         </div>
         <div className="mt-3">

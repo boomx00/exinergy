@@ -8,6 +8,7 @@ module.exports = {
       host: '127.0.0.1',
       user: 'root',
       password: 'Goldenboy#3',
+      // password: 'root',
       database: 'exinergy'
     },
     pool: {

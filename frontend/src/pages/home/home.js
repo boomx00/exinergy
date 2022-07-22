@@ -16,7 +16,7 @@ function Home(props){
     let navigate = new useNavigate();
     const style = { color: "black", fontSize: "5em", backgroundColor: "grey", padding: "1rem",borderRadius: "1rem",}
     useEffect(() => {
-        verifyToken();
+        // verifyToken();
     }, []);
  
     const verifyToken = async()=>{
@@ -31,9 +31,8 @@ function Home(props){
         <div className='container mt-5'>
 <div class="grid-container">
 <ComponentCard caption="Master" icon={<MdInventory  style={style}/>} linkto="master/inventory"/>
-<ComponentCard caption="Offering" icon={<MdInventory  style={style}/>} />
-<ComponentCard caption="this" icon={<MdInventory  style={style}/>} />
-<ComponentCard caption="this" icon={<MdInventory  style={style}/>} />
+<ComponentCard caption="Offering" icon={<MdInventory  style={style}/>} linkto="offering"/>
+
 
 </div>
 
