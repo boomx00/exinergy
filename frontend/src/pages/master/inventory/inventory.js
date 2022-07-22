@@ -49,7 +49,7 @@ var target = props.target;
           </Form>
         </div>
         <div className="col-2 align-right">
-        <Button variant="success">Add</Button>
+        <Button variant="success"  href="/master/inventory/create">Add</Button>
 
         </div>
         <div className="mt-3">
