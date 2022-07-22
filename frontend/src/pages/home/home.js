@@ -2,11 +2,17 @@ import React from 'react';
 import ComponentCard from './component/componentCard';
 import { MdInventory } from "react-icons/md";
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { checkToken } from '../../redux/slices/authSlices';
 import { useNavigate } from 'react-router-dom';
-function Home(){
+import {getInventory} from "../../redux/slices/inventorySlices";
+
+function Home(props){
     const dispatch = new useDispatch();
+    useEffect(() => {
+    //   console.log(props)
+    //   dispatch(getInventory())
+  }, []);  
     let navigate = new useNavigate();
     const style = { color: "black", fontSize: "5em", backgroundColor: "grey", padding: "1rem",borderRadius: "1rem",}
     useEffect(() => {
@@ -15,6 +21,7 @@ function Home(){
  
     const verifyToken = async()=>{
         const res = await dispatch(checkToken())
+        console.log(res + " sdf")
         if(res === 401){
             navigate("/")
         }
@@ -24,7 +31,7 @@ function Home(){
         <div className='container mt-5'>
 <div class="grid-container">
 <ComponentCard caption="Master" icon={<MdInventory  style={style}/>} linkto="master/inventory"/>
-<ComponentCard caption="this" icon={<MdInventory  style={style}/>} />
+<ComponentCard caption="Offering" icon={<MdInventory  style={style}/>} />
 <ComponentCard caption="this" icon={<MdInventory  style={style}/>} />
 <ComponentCard caption="this" icon={<MdInventory  style={style}/>} />
 
@@ -53,4 +60,7 @@ function Home(){
         // </div>
     )
 }
-export default Home;
+const mapStateToProps = (state) => ({
+    inventory: state.inventory
+  })
+  export default connect(mapStateToProps, null)(Home)

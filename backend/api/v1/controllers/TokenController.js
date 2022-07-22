@@ -17,6 +17,21 @@ class TokenController{
         }
     }
 
+    async checkToken (req,res){
+        try{
+            if(res.locals.id){
+                res.status(200).send({
+                    'status': 'TOKEN_VERIFIED',
+                  })
+            }else{
+                res.status(401).send({
+                    'status': 'TOKEN_UNAUTHORIZED',
+                  })
+            }
+        }catch(err){
+            console.log(err)
+        }
+    }
     
 }
 

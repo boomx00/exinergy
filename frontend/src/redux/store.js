@@ -1,8 +1,9 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import authSlice from './slices/authSlices';
+import { createStore, configureStore, combineReducers } from '@reduxjs/toolkit';
+import inventorySlice from './slices/inventorySlices';
 
 const reducer = combineReducers({
-    auth: authSlice,
+    inventory:inventorySlice,
+   
 });
 
 const rootReducer = (state, action) => {
