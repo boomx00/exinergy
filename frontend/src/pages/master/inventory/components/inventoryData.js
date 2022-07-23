@@ -40,7 +40,7 @@ function InventoryData(props){
         <div className="ag-theme-alpine" style={{height: 650, width: '100%', marginBottom:"3rem"}}>
         <AgGridReact
         ref={gridRef}
-            onFirstDataRendered={onFirstDataRendered}
+            // onFirstDataRendered={onFirstDataRendered}
             rowData={rowData}
             columnDefs={columnDefs}
             pagination={true}
